@@ -29,7 +29,7 @@ public class ItemController implements ItemAPI {
 
     @Override
     public ItemDTO updateItem(UUID itemId, ItemDTO itemUpdated) {
-        return null;
+        return itemMapper.fromItem(itemService.updateItem(itemId,itemMapper.fromDTO(itemUpdated)));
     }
 
     @Override

@@ -24,7 +24,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item updateItem(UUID itemId, Item itemUpdated) {
-        return null;
+        itemRepository.deleteById(itemId);
+        return itemRepository.save(itemUpdated);
     }
 
     @Override
