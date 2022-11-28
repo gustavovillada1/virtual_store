@@ -15,6 +15,8 @@ public class ItemDTO {
 
     private String description;
 
+    private String urlImage;
+
     private double price;
 
 

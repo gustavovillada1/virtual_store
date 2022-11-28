@@ -29,7 +29,6 @@ public class Order {
 
     private String status;
 
-
     @PrePersist
     public void generateId(){
         this.orderId = UUID.randomUUID();
