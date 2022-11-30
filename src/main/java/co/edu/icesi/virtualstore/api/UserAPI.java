@@ -11,11 +11,11 @@ import java.util.UUID;
 @RequestMapping("/users")
 public interface UserAPI {
 
-    @GetMapping("/{userId}")
+    @GetMapping("/search/{userId}")
     public UserDTO getUser(@PathVariable UUID userId);
 
 
-    @PostMapping()
+    @PostMapping("/create")
     public UserDTO createUser(@RequestBody @Valid UserDTO userDTO);
 
     @GetMapping()

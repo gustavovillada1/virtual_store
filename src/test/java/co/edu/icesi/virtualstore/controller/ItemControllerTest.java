@@ -16,6 +16,7 @@ import org.mockito.ArgumentMatchers;
 import java.util.ArrayList;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -38,7 +39,7 @@ public class ItemControllerTest {
     @Test
     public void testCreateAnimal(){
         UUID itemId=UUID.randomUUID();
-        when(itemService.createItem(ArgumentMatchers.any())).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000));
+        when(itemService.createItem(any())).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000));
         ItemDTO itemTest = new ItemDTO(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000);
         assertEquals(itemTest.getName(), itemController.createItem(itemTest).getName());
     }
@@ -106,16 +107,19 @@ public class ItemControllerTest {
     }
 
 
+
+
     @Test
     public void testFindItem(){
         UUID itemId = UUID.randomUUID();
 
-        //when(itemService.createItem(ArgumentMatchers.any())).thenReturn(new Item(UUID.randomUUID(),"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000););
         when(itemService.getItem(itemId)).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000));
 
         ItemDTO itemResult= itemController.getItem(itemId);
         assertEquals(itemResult.getItemId(),itemId);
     }
+
+
 
 
 

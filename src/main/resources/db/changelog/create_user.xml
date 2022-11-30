@@ -4,15 +4,16 @@
 
     <!-- Refer to https://docs.liquibase.com/change-types/community/create-table.html -->
 
-    <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0750d" author="gustavo.villada" failOnError="true">
+    <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0751d" author="gustavo.villada" failOnError="true">
 
         <createTable tableName="user">
             <column name="id" type="UUID">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="name" type="varchar(255)" />
-            <column name="description" type="varchar(255)" />
-            <column name="price" type="varchar(255)" />
+            <column name="email" type="varchar(255)" />
+            <column name="password" type="varchar(255)" />
+            <column name="address" type="varchar(255)" />
+            <column name="phone_number" type="varchar(255)" />
 
         </createTable>
     </changeSet>

@@ -4,7 +4,7 @@
 
     <!-- Refer to https://docs.liquibase.com/change-types/community/create-table.html -->
 
-    <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0750d" author="gustavo.villada" failOnError="true">
+    <changeSet id="33d4e8bc-7210-47c3-9617-c56ab7c0750d" author="gustavo.villada" failOnError="true">
 
         <createTable tableName="item">
             <column name="id" type="UUID">
