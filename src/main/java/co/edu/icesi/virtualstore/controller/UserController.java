@@ -70,7 +70,7 @@ public class UserController implements UserAPI {
 
         //Verify if there is one @, later get the second part with de domain, and verify that the first part not have special characters
 
-        if(divideEmail.length == 2 && divideEmail[0].matches("^[a-zA-Z0-9]*$")){
+        if(divideEmail.length == 2 ){
             return true;
         }else{
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError("1234","Throw UserDemoException - Email is not correct"));
@@ -84,7 +84,7 @@ public class UserController implements UserAPI {
         if(phoneNumber.substring(0,3).equals("+57") && phoneNumber.substring(3,13).matches("^[0-9]*$") && phoneNumber.length() == 13){
             return true;
         }else{
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError("1234","Throw UserDemoException - Email is not correct"));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError("1234","Throw UserDemoException - Phone is not correct"));
         }
     }
 }
