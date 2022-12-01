@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import java.util.UUID;
 
 @Data
-//@Table(name = "`rol`")
+@Table(name = "`role`")
 @Entity
 @Builder
 @NoArgsConstructor
@@ -23,19 +23,15 @@ public class Role {
 
     @Id
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID roleId;
+    private UUID id;
 
     private String name;
 
     private String description;
 
-
-
     @PrePersist
     public void generateId(){
-        this.roleId = UUID.randomUUID();
+        this.id = UUID.randomUUID();
     }
-
-
 
 }

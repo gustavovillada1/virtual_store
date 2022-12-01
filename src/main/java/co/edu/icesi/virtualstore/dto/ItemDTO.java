@@ -18,6 +18,4 @@ public class ItemDTO {
     private String urlImage;
 
     private double price;
-
-
 }

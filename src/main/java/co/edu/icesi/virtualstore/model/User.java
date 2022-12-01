@@ -32,6 +32,8 @@ public class User {
 
     private String phoneNumber;
 
+    private String roleId;
+
     @PrePersist
     public void generateId(){
         this.id = UUID.randomUUID();

@@ -29,14 +29,9 @@ public class Permission {
 
     private String key;
 
-
-
-
     @PrePersist
     public void generateId(){
         this.permissionId = UUID.randomUUID();
     }
-
-
 
 }
