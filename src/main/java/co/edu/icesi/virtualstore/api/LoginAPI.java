@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/login")
-@CrossOrigin
 public interface LoginAPI {
 
     @PostMapping
