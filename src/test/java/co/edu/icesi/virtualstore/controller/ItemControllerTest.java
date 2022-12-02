@@ -1,7 +1,7 @@
 package co.edu.icesi.virtualstore.controller;
 
 
-import co.edu.icesi.virtualstore.constans.ItemErrorCode;
+import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
 import co.edu.icesi.virtualstore.dto.ItemDTO;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.mapper.ItemMapper;
@@ -11,7 +11,6 @@ import co.edu.icesi.virtualstore.service.ItemService;
 import co.edu.icesi.virtualstore.service.impl.ItemServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -66,7 +65,7 @@ public class ItemControllerTest {
         itemDTO.setName(itemName);
         StoreDemoException exception =assertThrows(StoreDemoException.class, () -> {
             itemController.createItem(itemDTO);} );
-        assertEquals(ItemErrorCode.CODE_01,exception.getError().getCode());
+        assertEquals(StoreErrorCode.I_C_01,exception.getError().getCode());
     }
 
 
@@ -77,7 +76,7 @@ public class ItemControllerTest {
             itemController.createItem(itemDTO);
             fail();
         }catch (StoreDemoException exception){
-            assertEquals(ItemErrorCode.CODE_03,exception.getError().getCode());
+            assertEquals(StoreErrorCode.I_C_03,exception.getError().getCode());
         }
     }
 
@@ -91,7 +90,7 @@ public class ItemControllerTest {
         itemDTO.setDescription(itemDescription);
         StoreDemoException exception =assertThrows(StoreDemoException.class, () -> {
             itemController.createItem(itemDTO);} );
-        assertEquals(ItemErrorCode.CODE_02,exception.getError().getCode());
+        assertEquals(StoreErrorCode.I_C_02,exception.getError().getCode());
     }
 
 
@@ -102,7 +101,7 @@ public class ItemControllerTest {
             itemController.createItem(itemDTO);
             fail();
         }catch (StoreDemoException exception){
-            assertEquals(ItemErrorCode.CODE_04,exception.getError().getCode());
+            assertEquals(StoreErrorCode.I_C_04,exception.getError().getCode());
         }
     }
 

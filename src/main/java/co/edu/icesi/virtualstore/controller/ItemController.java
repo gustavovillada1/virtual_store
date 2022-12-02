@@ -1,9 +1,7 @@
 package co.edu.icesi.virtualstore.controller;
 
 import co.edu.icesi.virtualstore.api.ItemAPI;
-import co.edu.icesi.virtualstore.constans.ItemErrorCode;
 import co.edu.icesi.virtualstore.dto.ItemDTO;
-import co.edu.icesi.virtualstore.error.StoreErrorCode;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.mapper.ItemMapper;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
+import static co.edu.icesi.virtualstore.utils.constans.StoreErrorCode.*;
 
 @RestController
 @AllArgsConstructor
@@ -54,7 +54,7 @@ public class ItemController implements ItemAPI {
 
     private boolean verifyItemNameEmpty(String itemName){
         if(itemName==null||itemName.isEmpty()) {
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(ItemErrorCode.CODE_03, "El nombre del item no debe estar vacio."));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_03, I_C_03.getErrorMessage()));
         }else{
             return true;
         }
@@ -65,13 +65,13 @@ public class ItemController implements ItemAPI {
         if(itemName.length() <= 100){
             return true;
         }else{
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(ItemErrorCode.CODE_01,"El nombre del item no debe ser mayor a 100 caracteres"));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_01, I_C_01.getErrorMessage()));
         }
     }
 
     private boolean verifyItemDescriptionEmpty(String itemDescription){
         if(itemDescription==null||itemDescription.isEmpty()) {
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(ItemErrorCode.CODE_04, "La descripción del item está vacía"));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_04, I_C_04.getErrorMessage()));
         }else{
             return true;
         }
@@ -81,7 +81,7 @@ public class ItemController implements ItemAPI {
         if(itemDescription.length() <= 255 ){
             return true;
         }else{
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(ItemErrorCode.CODE_02,"La descripción del item no debe ser mayor a 255 caracteres"));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_02, I_C_02.getErrorMessage()));
         }
     }
 

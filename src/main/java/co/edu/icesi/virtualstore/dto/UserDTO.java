@@ -15,11 +15,12 @@ public class UserDTO {
     @NotNull
     private String email;
 
+    @NotNull
     private String password;
 
     private String address;
 
-    private String phoneNumber;
+    private String phone;
 
     private String roleName;
 }
