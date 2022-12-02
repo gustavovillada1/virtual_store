@@ -44,8 +44,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getItems() {
-        List<Item> itemsList= StreamSupport.stream(itemRepository.findAll().spliterator(),false).collect(Collectors.toList());
-        return itemsList;
+        return StreamSupport.stream(itemRepository.findAll().spliterator(),false).collect(Collectors.toList());
     }
 
     private Item verifyItemIdInDatabase(UUID itemId){

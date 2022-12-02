@@ -18,8 +18,8 @@ public interface UserAPI {
     @PostMapping("/create")
     public UserDTO createUser(@RequestBody UserCreateDTO userCreateDTO);
 
-    @PatchMapping("/update/rol/{userId}")
-    public UserDTO updateUserRol(@PathVariable UUID userId, @RequestBody UUID newRoleId);
+    @PatchMapping("/update/role/{userId}")
+    public UserDTO updateUserRol(@PathVariable @RequestBody UUID userId, @RequestBody UUID newRoleId);
 
     @GetMapping()
     public List<UserDTO> getUsers();
