@@ -18,12 +18,13 @@
  * DOES NOT CONVEY OR IMPLY ANY RIGHT TO REPRODUCE, DISCLOSE, DISTRIBUTE OR OTHERWISE USE IT, OR TO MANUFACTURE, USE, OR
  * SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
  */
-/*
+
 package co.edu.icesi.virtualstore.security;
 
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.utils.JWTParser;
+import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -56,7 +57,7 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
    private static final String TOKEN_PREFIX = "Bearer ";
    private static final String USER_ID_CLAIM_NAME = "userId";
    //private static final String[] excludedPaths = {"POST /login"};
-    private static final String[] excludedPaths = {"POST /users/create", "POST /login", "OPTIONS /users/create", "OPTIONS /login"};
+    private static final String[] excludedPaths = { "POST /login",  "OPTIONS /login"};
 
 
 
@@ -89,10 +90,10 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.setUserContext(context);
                 filterChain.doFilter(request, response);
             } else {
-                createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError("","You must be authenticated to make this request.")),response);
+                createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError(StoreErrorCode.I_C_01,"You must be authenticated to make this request.")),response);
             }
         } catch (JwtException e) {
-            createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError("","You must be authenticated to make this request.")), response);
+            createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError(StoreErrorCode.I_C_01,"You must be authenticated to make this request.")), response);
         } finally {
             SecurityContextHolder.clearContext();
         }
@@ -118,6 +119,10 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
+        System.out.println(request.getMethod());
+         if(request.getMethod().equals("OPTIONS")){
+            return true;
+        }
         String methodPlusPath = request.getMethod() + " " + request.getRequestURI();
         return Arrays.stream(excludedPaths).anyMatch(path -> path.equalsIgnoreCase(methodPlusPath));
     }
@@ -133,4 +138,3 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
 
 }
 
- */
