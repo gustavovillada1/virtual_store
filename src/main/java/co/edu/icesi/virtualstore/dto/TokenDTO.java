@@ -9,5 +9,6 @@ import lombok.Data;
 public class TokenDTO {
 
     private String token;
+    private User user;
 
 }

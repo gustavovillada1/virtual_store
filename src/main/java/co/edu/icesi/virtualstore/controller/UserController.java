@@ -63,7 +63,7 @@ public class UserController implements UserAPI {
         }
 
         if(userCreateDTO.getPhone() != null){
-            verifyUserEmail(userCreateDTO.getPhone());
+            verifyUserPhone(userCreateDTO.getPhone());
         }
     }
 
