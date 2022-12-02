@@ -24,7 +24,7 @@ package co.edu.icesi.virtualstore.security;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.utils.JWTParser;
-import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
+import co.edu.icesi.virtualstore.constans.StoreErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -90,7 +90,7 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.setUserContext(context);
                 filterChain.doFilter(request, response);
             } else {
-                createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError(StoreErrorCode.I_C_01,"You must be authenticated to make this request.")),response);
+                createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError(StoreErrorCode.I_C_01,"You must be authenticated to make this request.")),response); //TODO create custom errors
             }
         } catch (JwtException e) {
             createUnauthorizedFilter(new StoreDemoException(HttpStatus.UNAUTHORIZED, new StoreDemoError(StoreErrorCode.I_C_01,"You must be authenticated to make this request.")), response);

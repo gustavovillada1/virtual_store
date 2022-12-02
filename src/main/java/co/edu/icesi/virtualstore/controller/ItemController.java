@@ -39,10 +39,11 @@ public class ItemController implements ItemAPI {
 
     @Override
     public ItemDTO createItem(ItemDTO itemDTO) {
-        verifyItemNameEmpty(itemDTO.getName());
-        verifyItemNameLength(itemDTO.getName());
-        verifyItemDescriptionEmpty(itemDTO.getDescription());
-        verifyItemDescriptionLength(itemDTO.getDescription());
+        verifyNamePresence(itemDTO);
+        verifyNameLength(itemDTO);
+        verifyDescriptionPresence(itemDTO);
+        verifyDescriptionLength(itemDTO);
+        verifyPriceRange(itemDTO);
         return itemMapper.fromItem(itemService.createItem(itemMapper.fromDTO(itemDTO)));
     }
 
@@ -52,39 +53,36 @@ public class ItemController implements ItemAPI {
     }
 
 
-    private boolean verifyItemNameEmpty(String itemName){
-        if(itemName==null||itemName.isEmpty()) {
+    private void verifyNamePresence(ItemDTO itemDTO){
+        if(itemDTO.getName() == null) {
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_03, I_C_03.getErrorMessage()));
-        }else{
-            return true;
         }
     }
 
-    private boolean verifyItemNameLength(String itemName){
+    private void verifyNameLength(ItemDTO itemDTO){
 
-        if(itemName.length() <= 100){
-            return true;
-        }else{
+        if(itemDTO.getName().length() > 100){
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_01, I_C_01.getErrorMessage()));
         }
     }
 
-    private boolean verifyItemDescriptionEmpty(String itemDescription){
-        if(itemDescription==null||itemDescription.isEmpty()) {
+    private void verifyDescriptionPresence(ItemDTO itemDTO){
+        if(itemDTO.getDescription() == null) {
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_04, I_C_04.getErrorMessage()));
-        }else{
-            return true;
         }
     }
 
-    private boolean verifyItemDescriptionLength(String itemDescription){
-        if(itemDescription.length() <= 255 ){
-            return true;
-        }else{
+    private void verifyDescriptionLength(ItemDTO itemDTO){
+        if(itemDTO.getDescription().length() > 900 ){
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_02, I_C_02.getErrorMessage()));
         }
     }
 
+    private void verifyPriceRange(ItemDTO itemDTO){
+        if(itemDTO.getPrice() <= 0){
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_05, I_C_05.getErrorMessage()));
+        }
+    }
 
 }
 
