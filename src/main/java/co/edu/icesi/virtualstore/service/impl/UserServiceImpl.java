@@ -47,19 +47,14 @@ public class UserServiceImpl implements UserService {
     }
 
     private void verifyEmailRepeat(String email){
-        for (User i:getUsers()) {
-            if (i.getEmail().equals(email)){
-                throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_01, U_S_01.getErrorMessage()));
-            }
+        if(userRepository.findByEmail(email).isPresent()){
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_01, U_S_01.getErrorMessage()));
         }
     }
 
     private void verifyPhoneRepeat(String phone){
-        for (User i:getUsers()) {
-            if (i.getPhone().equals(phone)){
-                throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_02,U_S_02.getErrorMessage()));
-
-            }
+        if (userRepository.findByPhone(phone).isPresent()){
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_02,U_S_02.getErrorMessage()));
         }
     }
 
