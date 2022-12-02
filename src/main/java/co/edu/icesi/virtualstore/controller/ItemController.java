@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static co.edu.icesi.virtualstore.utils.constans.StoreErrorCode.*;
+import static co.edu.icesi.virtualstore.constans.StoreErrorCode.*;
 
 @RestController
 @AllArgsConstructor

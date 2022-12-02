@@ -1,7 +1,7 @@
 package co.edu.icesi.virtualstore.model;
 
 
-import co.edu.icesi.virtualstore.utils.constans.OrderStatus;
+import co.edu.icesi.virtualstore.constans.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package co.edu.icesi.virtualstore.controller;
 
 
-import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
+import co.edu.icesi.virtualstore.constans.StoreErrorCode;
 import co.edu.icesi.virtualstore.dto.ItemDTO;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.mapper.ItemMapper;

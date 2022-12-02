@@ -7,7 +7,6 @@ import co.edu.icesi.virtualstore.model.User;
 import co.edu.icesi.virtualstore.repository.RoleRepository;
 import co.edu.icesi.virtualstore.repository.UserRepository;
 import co.edu.icesi.virtualstore.service.UserService;
-import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static co.edu.icesi.virtualstore.utils.constans.StoreErrorCode.*;
+import static co.edu.icesi.virtualstore.constans.StoreErrorCode.*;
 
 @AllArgsConstructor
 @Service
@@ -43,6 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsers() {
+        //TODO Solo admin puede listar los usuarios
         return StreamSupport.stream(userRepository.findAll().spliterator(),false).collect(Collectors.toList());
     }
 

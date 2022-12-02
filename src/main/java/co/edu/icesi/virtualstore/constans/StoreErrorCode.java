@@ -1,4 +1,4 @@
-package co.edu.icesi.virtualstore.utils.constans;
+package co.edu.icesi.virtualstore.constans;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Getter;
 public enum StoreErrorCode {
 
     I_C_01("El nombre del item no debe ser mayor a 100 caracteres"),
-    I_C_02("La descripción del item no debe ser mayor a 255 caracteres"),
+    I_C_02("La descripción del item no debe ser mayor a 1000 caracteres"),
     I_C_03("El nombre del item no debe estar vacio."),
     I_C_04("La descripción del item está vacía"),
 

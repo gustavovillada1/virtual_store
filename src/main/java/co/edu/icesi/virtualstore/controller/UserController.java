@@ -1,7 +1,6 @@
 package co.edu.icesi.virtualstore.controller;
 
 import co.edu.icesi.virtualstore.api.UserAPI;
-import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
 import co.edu.icesi.virtualstore.dto.UserCreateDTO;
 import co.edu.icesi.virtualstore.dto.UserDTO;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static co.edu.icesi.virtualstore.utils.constans.StoreErrorCode.*;
+import static co.edu.icesi.virtualstore.constans.StoreErrorCode.*;
 
 @RestController
 @AllArgsConstructor
