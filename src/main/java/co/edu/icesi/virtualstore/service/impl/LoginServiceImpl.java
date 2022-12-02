@@ -30,7 +30,7 @@ public class LoginServiceImpl implements LoginService {
         if(user.getPassword().equals(loginDTO.getPassword())) {
             Map<String, String> claims = new HashMap<>();
             claims.put("userId", user.getUserId().toString());
-            return new TokenDTO(JWTParser.createJWT(user.getUserId().toString(),user.getEmail(), user.getPhoneNumber(), claims,1000000L));
+            return new TokenDTO(JWTParser.createJWT(user.getUserId().toString(),user.getEmail(), user.getPhone(), claims,1000000L));
         }
         throw new InvalidParameterException();
 

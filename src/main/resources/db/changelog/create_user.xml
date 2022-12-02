@@ -13,7 +13,7 @@
             <column name="email" type="varchar(255)" />
             <column name="password" type="varchar(255)" />
             <column name="address" type="varchar(255)" />
-            <column name="phone_number" type="varchar(255)" />
+            <column name="phone" type="varchar(255)" />
             <column name="role_id" type="UUID" >
                 <constraints nullable="false" references="role(role_id)" foreignKeyName="fk-user-role"/>
             </column>

@@ -6,7 +6,7 @@
 
     <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0751d" author="gustavo.villada" failOnError="true">
 
-        <createTable tableName="role_permision">
+        <createTable tableName="role_permission">
             <column name="role_id" type="UUID">
                 <constraints nullable="false" primaryKey="true" references="role(role_id)" foreignKeyName="fk-role-permission-role"/>
             </column>
