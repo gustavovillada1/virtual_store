@@ -18,7 +18,7 @@
  * DOES NOT CONVEY OR IMPLY ANY RIGHT TO REPRODUCE, DISCLOSE, DISTRIBUTE OR OTHERWISE USE IT, OR TO MANUFACTURE, USE, OR
  * SELL ANYTHING THAT IT MAY DESCRIBE, IN WHOLE OR IN PART.
  */
-/*
+
 package co.edu.icesi.virtualstore.security;
 
 import lombok.EqualsAndHashCode;
@@ -59,4 +59,3 @@ public class SecurityContext implements Serializable {
 
 }
 
- */
