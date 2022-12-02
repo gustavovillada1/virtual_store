@@ -16,5 +16,5 @@ public interface UserService {
 
     public List<User> getUsers();
 
-    public User updateUserRol(UUID userId, UUID newRoleId);
+    public User updateUserRol(@PathVariable UUID userId, @RequestBody UUID newRoleId);
 }
