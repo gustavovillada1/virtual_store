@@ -1,5 +1,6 @@
 package co.edu.icesi.virtualstore.api;
 
+import co.edu.icesi.virtualstore.dto.UpdateUserRolDTO;
 import co.edu.icesi.virtualstore.model.Role;
 import co.edu.icesi.virtualstore.dto.UserCreateDTO;
 import co.edu.icesi.virtualstore.dto.UserDTO;
@@ -19,7 +20,7 @@ public interface UserAPI {
     public UserDTO createUser(@RequestBody UserCreateDTO userCreateDTO);
 
     @PatchMapping("/{userId}")
-    public UserDTO updateUserRol(@PathVariable UUID userId, @RequestBody UserDTO userDTO);
+    public UserDTO updateUserRol(@PathVariable UUID userId, @RequestBody UpdateUserRolDTO newRoleId);
 
     @GetMapping()
     public List<UserDTO> getUsers();

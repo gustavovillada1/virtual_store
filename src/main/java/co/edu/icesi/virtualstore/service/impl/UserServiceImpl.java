@@ -47,11 +47,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUserRol(UUID userId, User updatedUser) {
-        User oldUser = verifyUserExistence(userId);
-        Role role = verifyRoleExistence(updatedUser.getRole().getRoleId());
-        oldUser.setRole(updatedUser.getRole());
-        return userRepository.save(oldUser);
+    public User updateUserRol(UUID userId, UUID newRoleId) {
+        Role role = verifyRoleExistence(newRoleId);
+        User user = verifyUserExistence(userId);
+        user.setRole(role);
+        return userRepository.save(user);
     }
 
     private void verifyEmailRepeat(String email){

@@ -1,6 +1,7 @@
 package co.edu.icesi.virtualstore.controller;
 
 import co.edu.icesi.virtualstore.api.UserAPI;
+import co.edu.icesi.virtualstore.dto.UpdateUserRolDTO;
 import co.edu.icesi.virtualstore.dto.UserCreateDTO;
 import co.edu.icesi.virtualstore.dto.UserDTO;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
@@ -42,8 +43,8 @@ public class UserController implements UserAPI {
     }
 
     @Override
-    public UserDTO updateUserRol(UUID userId, UserDTO userDTO) {
-        return userMapper.fromUser(userService.updateUserRol(userId, userMapper.fromDTO(userDTO)));
+    public UserDTO updateUserRol(UUID userId, UpdateUserRolDTO newRoleId) {
+        return userMapper.fromUser(userService.updateUserRol(userId, newRoleId.getRoleId()));
     }
 
     @Override
@@ -62,7 +63,7 @@ public class UserController implements UserAPI {
         }
 
         if(userCreateDTO.getPhone() != null){
-            verifyUserPhone(userCreateDTO.getPhone());
+            verifyUserEmail(userCreateDTO.getPhone());
         }
     }
 
