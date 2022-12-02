@@ -6,6 +6,7 @@ import co.edu.icesi.virtualstore.dto.UserDTO;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.mapper.UserMapper;
+import co.edu.icesi.virtualstore.model.Role;
 import co.edu.icesi.virtualstore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,11 @@ public class UserController implements UserAPI {
     public UserDTO createUser(UserCreateDTO userCreateDTO) {
         verifyEmailOrPhonePresence(userCreateDTO);
         return userMapper.fromUser( userService.createUser(userMapper.fromCreateDTO(userCreateDTO), userCreateDTO.getRoleId()) );
+    }
+
+    @Override
+    public UserDTO updateUserRol(UUID userId, UUID newRoleId) {
+        return userMapper.fromUser(userService.updateUserRol(userId, newRoleId));
     }
 
     @Override

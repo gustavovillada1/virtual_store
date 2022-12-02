@@ -46,6 +46,14 @@ public class UserServiceImpl implements UserService {
         return StreamSupport.stream(userRepository.findAll().spliterator(),false).collect(Collectors.toList());
     }
 
+    @Override
+    public User updateUserRol(UUID userId, UUID newRoleId) {
+        Role role = verifyRoleExistence(newRoleId);
+        User user = verifyUserExistence(userId);
+        user.setRole(role);
+        return userRepository.save(user);
+    }
+
     private void verifyEmailRepeat(String email){
         if(userRepository.findByEmail(email).isPresent()){
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_01, U_S_01.getErrorMessage()));
@@ -54,17 +62,24 @@ public class UserServiceImpl implements UserService {
 
     private void verifyPhoneRepeat(String phone){
         if (userRepository.findByPhone(phone).isPresent()){
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_02,U_S_02.getErrorMessage()));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_02, U_S_02.getErrorMessage()));
         }
     }
 
     private Role verifyRoleExistence(UUID roleId){
         Role role = roleRepository.findById(roleId).orElse(null);
         if(role == null){
-            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_03,U_S_03.getErrorMessage()));
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_03, U_S_03.getErrorMessage()));
         }
         return role;
     }
 
+    private User verifyUserExistence(UUID userId){
+        User user = userRepository.findById(userId).orElse(null);
+        if(user == null){
+            throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(U_S_04, U_S_04.getErrorMessage()));
+        }
+        return user;
+    }
 
 }

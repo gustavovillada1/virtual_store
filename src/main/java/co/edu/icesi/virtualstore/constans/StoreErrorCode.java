@@ -20,7 +20,8 @@ public enum StoreErrorCode {
     U_C_03("El patrón del telefono no es valido"),
     U_S_01("Correo ya en uso"),
     U_S_02("Telefono ya en uso"),
-    U_S_03("El rol ingresado no existe");
+    U_S_03("El rol ingresado no existe"),
+    U_S_04("El usuario ingresado no existe");
 
     private final String errorMessage;
 
