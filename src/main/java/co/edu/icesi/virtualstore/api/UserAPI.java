@@ -11,15 +11,15 @@ import java.util.UUID;
 @RequestMapping("/users")
 public interface UserAPI {
 
-    @GetMapping("/search/{userId}")
+    @GetMapping("/{userId}")
     public UserDTO getUser(@PathVariable UUID userId);
 
 
-    @PostMapping("/create")
+    @PostMapping()
     public UserDTO createUser(@RequestBody UserCreateDTO userCreateDTO);
 
-    @PatchMapping("/update/role/{userId}")
-    public UserDTO updateUserRol(@PathVariable @RequestBody UUID userId, @RequestBody UUID newRoleId);
+    @PatchMapping("/{userId}")
+    public UserDTO updateUserRol(@PathVariable UUID userId, @RequestBody UserDTO userDTO);
 
     @GetMapping()
     public List<UserDTO> getUsers();

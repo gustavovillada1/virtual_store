@@ -18,8 +18,8 @@ public enum StoreErrorCode {
     U_C_01("El correo y telefono no pueden estar ambos vacios. Llenar al menos uno"),
     U_C_02("El patrón del correo no es valido"),
     U_C_03("El patrón del telefono no es valido"),
-    U_S_01("Correo ya en uso"),
-    U_S_02("Telefono ya en uso"),
+    U_S_01("Este correo ya esta en uso"),
+    U_S_02("Este telefono ya esta en uso"),
     U_S_03("El rol ingresado no existe"),
     U_S_04("El usuario ingresado no se encuentra registrado"),
 

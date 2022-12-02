@@ -42,8 +42,8 @@ public class UserController implements UserAPI {
     }
 
     @Override
-    public UserDTO updateUserRol(UUID userId, UUID newRoleId) {
-        return userMapper.fromUser(userService.updateUserRol(userId, newRoleId));
+    public UserDTO updateUserRol(UUID userId, UserDTO userDTO) {
+        return userMapper.fromUser(userService.updateUserRol(userId, userMapper.fromDTO(userDTO)));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class UserController implements UserAPI {
         }
 
         if(userCreateDTO.getPhone() != null){
-            verifyUserEmail(userCreateDTO.getPhone());
+            verifyUserPhone(userCreateDTO.getPhone());
         }
     }
 

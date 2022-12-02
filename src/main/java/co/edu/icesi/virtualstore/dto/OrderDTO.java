@@ -1,5 +1,6 @@
 package co.edu.icesi.virtualstore.dto;
 
+import co.edu.icesi.virtualstore.constans.OrderStatus;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -15,9 +16,9 @@ public class OrderDTO {
     private double total;
 
     @NotNull
-    private String status;
+    private OrderStatus status;
 
-    private List<ItemDTO> orderItems;
+    private List<OrderItemDTO> orderItems;
 
     @NotNull
     private UUID userId;

@@ -2,7 +2,7 @@
 INSERT INTO role (role_id, name, description)
 VALUES ('d45bb1c6-354f-4052-9381-009679b8f289', 'ADMIN', 'Offers support to the application by creating and managing items, orders and users');
 INSERT INTO role (role_id, name, description)
-VALUES ('d45bb1c6-354f-4052-9381-009679b8f290', 'user', 'Uses the services provided by the application, its allowed to navigate thru the application and creating and handle its orders');
+VALUES ('d45bb1c6-354f-4052-9381-009679b8f290', 'USER', 'Uses the services provided by the application, its allowed to navigate thru the application and creating and handle its orders');
 
 ---PERMISSIONS
 INSERT INTO permission (permission_id, uri, method)

@@ -31,6 +31,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item updateItem(UUID itemId, Item itemUpdated) {
         Item item = verifyItemIdInDatabase(itemId);
+        item.setName(itemUpdated.getName());
         item.setDescription(itemUpdated.getDescription());
         item.setPrice(itemUpdated.getPrice());
         item.setUrl(itemUpdated.getUrl());

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -30,11 +31,9 @@ public class Order {
     @Column(name = "status")
     private OrderStatus status;
 
-    @ManyToOne(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    }, fetch = FetchType.EAGER, targetEntity = User.class)
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "order", targetEntity = OrderItem.class)
+    private List<OrderItem> orderItems;
+
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID userId;
 

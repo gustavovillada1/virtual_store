@@ -11,11 +11,8 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Data
-@Table(name = "`order_item`")
 @Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "`order_item`")
 public class OrderItem {
 
     @Id
@@ -25,11 +22,13 @@ public class OrderItem {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "order_id")
-    private UUID orderId;
+    @ManyToOne(targetEntity = Order.class)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-    @Column(name = "item_id")
-    private UUID itemId;
+    @ManyToOne(targetEntity = Item.class)
+    @JoinColumn(name = "item_id")
+    private Item item;
 
     @PrePersist
     public void generateId(){

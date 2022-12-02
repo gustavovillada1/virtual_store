@@ -11,7 +11,7 @@ import java.util.UUID;
 @RequestMapping("/orders")
 public interface OrderAPI {
 
-    @PostMapping("/create")
+    @PostMapping("")
     public OrderDTO createOrder(@RequestBody @Valid OrderDTO orderDTO);
 
     @GetMapping("/{orderId}")
@@ -20,8 +20,8 @@ public interface OrderAPI {
     @GetMapping()
     public List<OrderDTO> getOrders();
 
-    @PatchMapping("/update/status/{orderId}")
-    public OrderDTO updateOrderStatus(@PathVariable @RequestBody UUID orderId, @RequestBody OrderStatus orderStatus);
+    @PatchMapping("/{orderId}")
+    public OrderDTO updateOrderStatus(@PathVariable UUID orderId, @RequestBody OrderDTO orderDTO);
 
 //    public OrderItemDTO TODO
 

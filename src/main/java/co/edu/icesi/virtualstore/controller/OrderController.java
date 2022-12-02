@@ -46,9 +46,10 @@ public class OrderController implements OrderAPI {
     }
 
     @Override
-    public OrderDTO updateOrderStatus(UUID orderId, OrderStatus orderStatus) {
-        verifyStatusExistence(orderStatus);
-        return orderMapper.fromOrder(orderService.updateOrderStatus(orderId, orderStatus));
+    public OrderDTO updateOrderStatus(UUID orderId, OrderDTO orderDTO) {
+        verifyStatusExistence(orderDTO.getStatus());
+        //TODO validate state update difference between user and admin
+        return orderMapper.fromOrder(orderService.updateOrderStatus(orderId, orderMapper.fromDTO(orderDTO)));
     }
 
     private void verifyStatusExistence(OrderStatus orderStatus){

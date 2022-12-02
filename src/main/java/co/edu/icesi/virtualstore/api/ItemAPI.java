@@ -13,10 +13,10 @@ public interface ItemAPI {
     @GetMapping("/{itemId}")
     public ItemDTO getItem(@PathVariable UUID itemId);
 
-    @PutMapping("/update/{itemId}")
+    @PutMapping("/{itemId}")
     public ItemDTO updateItem(@PathVariable UUID itemId, @RequestBody  ItemDTO itemUpdated);
 
-    @PostMapping("/create")
+    @PostMapping()
     public ItemDTO createItem(@RequestBody @Valid ItemDTO itemDTO);
 
     @GetMapping()

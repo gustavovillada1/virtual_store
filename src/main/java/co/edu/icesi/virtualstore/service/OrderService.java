@@ -1,6 +1,7 @@
 package co.edu.icesi.virtualstore.service;
 
 import co.edu.icesi.virtualstore.constans.OrderStatus;
+import co.edu.icesi.virtualstore.dto.OrderDTO;
 import co.edu.icesi.virtualstore.model.Order;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,6 @@ public interface OrderService {
 
     public List<Order> getOrders();
 
-    public Order updateOrderStatus(@PathVariable @RequestBody UUID orderId, @RequestBody OrderStatus orderStatus);
+    public Order updateOrderStatus(@PathVariable UUID orderId, @RequestBody Order order);
 
 }
