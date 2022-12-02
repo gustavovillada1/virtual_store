@@ -123,6 +123,10 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
          if(request.getMethod().equals("OPTIONS")){
             return true;
         }
+
+        if(request.getMethod().equals("GET")){
+            return true;
+        }
         String methodPlusPath = request.getMethod() + " " + request.getRequestURI();
         return Arrays.stream(excludedPaths).anyMatch(path -> path.equalsIgnoreCase(methodPlusPath));
     }
