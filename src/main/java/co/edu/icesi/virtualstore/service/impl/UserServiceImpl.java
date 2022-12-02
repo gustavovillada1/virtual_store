@@ -43,9 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsers() {
-        List<User> userList=StreamSupport.stream(userRepository.findAll().spliterator(),false).collect(Collectors.toList());
-
-        return userList;
+        return StreamSupport.stream(userRepository.findAll().spliterator(),false).collect(Collectors.toList());
     }
 
     private void verifyEmailRepeat(String email){

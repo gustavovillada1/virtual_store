@@ -44,7 +44,6 @@ public class UserController implements UserAPI {
     @Override
     public List<UserDTO> getUsers() {
         return userService.getUsers().stream().map(userMapper::fromUser).collect(Collectors.toList());
-
     }
 
 

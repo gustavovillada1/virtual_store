@@ -1,5 +1,6 @@
 package co.edu.icesi.virtualstore.dto;
 
+import co.edu.icesi.virtualstore.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserDTO {
 
-    private UUID id;
+    private UUID userId;
 
     @NotNull
     private String email;
@@ -22,5 +23,5 @@ public class UserDTO {
 
     private String phone;
 
-    private String roleName;
+    private Role role;
 }

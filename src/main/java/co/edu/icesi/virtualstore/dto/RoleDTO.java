@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 public class RoleDTO {
 
-    private UUID id;
+    private UUID roleId;
 
     private String name;
 
