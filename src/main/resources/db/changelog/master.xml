@@ -3,7 +3,11 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="./create_role.xml" relativeToChangelogFile="true" />
+    <include file="./create_permission.xml" relativeToChangelogFile="true" />
+    <include file="./create_role_permission.xml" relativeToChangelogFile="true" />
     <include file="./create_user.xml" relativeToChangelogFile="true" />
     <include file="./create_item.xml" relativeToChangelogFile="true" />
+    <include file="./create_order.xml" relativeToChangelogFile="true" />
+    <include file="./create_order_item.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

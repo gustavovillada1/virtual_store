@@ -6,16 +6,17 @@
 
     <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0750d" author="gustavo.villada" failOnError="true">
 
-        <createTable tableName="orders">
-            <column name="order_id" type="UUID">
+        <createTable tableName="order_item">
+            <column name="order_item_id" type="UUID">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="total" type="number" />
-            <column name="status" type="varchar(255)" />
-            <column name="user_id" type="UUID" >
-                <constraints nullable="false" references="users(user_id)" foreignKeyName="fk-order-user"/>
+            <column name="quantity" type="number" />
+            <column name="order_id" type="UUID" >
+                <constraints foreignKeyName="fk-order-item-orders" references="orders(order_id)" nullable="false" primaryKey="true"/>
             </column>
-
+            <column name="item_id" type="UUID" >
+                <constraints foreignKeyName="fk-order-item-item" references="item(item_id)" nullable="false" primaryKey="true"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

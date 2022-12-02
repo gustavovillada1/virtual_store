@@ -6,18 +6,18 @@
 
     <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0751d" author="gustavo.villada" failOnError="true">
 
-        <createTable tableName="user">
-            <column name="id" type="UUID">
+        <createTable tableName="users">
+            <column name="user_id" type="UUID">
                 <constraints nullable="false" primaryKey="true" />
             </column>
             <column name="email" type="varchar(255)" />
             <column name="password" type="varchar(255)" />
             <column name="address" type="varchar(255)" />
             <column name="phone_number" type="varchar(255)" />
-            <column name="role_id" type="varchar(255)" />
+            <column name="role_id" type="UUID" >
+                <constraints nullable="false" references="role(role_id)" foreignKeyName="fk-user-role"/>
+            </column>
 
         </createTable>
-        <addForeignKeyConstraint baseTableName="user" baseColumnNames="role_id" constraintName="role_fk" referencedTableName="role"
-                                 referencedColumnNames="id" />
     </changeSet>
 </databaseChangeLog>

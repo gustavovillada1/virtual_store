@@ -6,12 +6,13 @@
 
     <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0751d" author="gustavo.villada" failOnError="true">
 
-        <createTable tableName="role">
+        <createTable tableName="role_permision">
             <column name="role_id" type="UUID">
-                <constraints nullable="false" primaryKey="true" />
+                <constraints nullable="false" primaryKey="true" references="role(role_id)" foreignKeyName="fk-role-permission-role"/>
             </column>
-            <column name="name" type="varchar(255)" />
-            <column name="description" type="varchar(1024)" />
+            <column name="permission_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" references="permission(permission_id)" foreignKeyName="fk-role-permission-permission"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

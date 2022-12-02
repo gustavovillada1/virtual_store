@@ -7,14 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Data
-@Table(name = "`item`")
+@Table(name = "item")
 @Entity
 @Builder
 @AllArgsConstructor
@@ -25,13 +22,17 @@ public class Item {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID itemId;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
-    private String urlImage;
-
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "url")
+    private String url;
 
 
     @PrePersist

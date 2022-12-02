@@ -3,6 +3,7 @@ package co.edu.icesi.virtualstore.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
@@ -11,6 +12,7 @@ public class UserDTO {
 
     private UUID id;
 
+    @NotNull
     private String email;
 
     private String password;
@@ -19,6 +21,5 @@ public class UserDTO {
 
     private String phoneNumber;
 
-    private String roleId;
-
+    private String roleName;
 }

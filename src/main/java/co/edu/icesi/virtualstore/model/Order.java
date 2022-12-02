@@ -1,20 +1,18 @@
 package co.edu.icesi.virtualstore.model;
 
 
+import co.edu.icesi.virtualstore.constans.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Data
-@Table(name = "`order`")
+@Table(name = "orders")
 @Entity
 @Builder
 @NoArgsConstructor
@@ -25,9 +23,20 @@ public class Order {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID orderId;
 
+    @Column(name = "total")
     private double total;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private OrderStatus status;
+
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    }, fetch = FetchType.EAGER, targetEntity = User.class)
+    @JoinColumn(name = "user_id")
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID userId;
 
     @PrePersist
     public void generateId(){

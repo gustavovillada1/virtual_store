@@ -6,12 +6,12 @@
 
     <changeSet id="33d4e9bc-7210-47c3-9617-c56ab7c0751d" author="gustavo.villada" failOnError="true">
 
-        <createTable tableName="role">
-            <column name="role_id" type="UUID">
+        <createTable tableName="permission">
+            <column name="permission_id" type="UUID">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="name" type="varchar(255)" />
-            <column name="description" type="varchar(1024)" />
+            <column name="uri" type="varchar(255)" />
+            <column name="method" type="varchar(1024)" />
         </createTable>
     </changeSet>
 </databaseChangeLog>

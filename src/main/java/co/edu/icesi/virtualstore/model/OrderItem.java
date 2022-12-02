@@ -7,10 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Data
@@ -25,13 +22,18 @@ public class OrderItem {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID orderItemId;
 
-    private int quanty;
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Column(name = "order_id")
+    private UUID orderId;
+
+    @Column(name = "item_id")
+    private UUID itemId;
 
     @PrePersist
     public void generateId(){
         this.orderItemId = UUID.randomUUID();
     }
-
-
 
 }

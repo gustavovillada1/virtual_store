@@ -3,6 +3,7 @@ package co.edu.icesi.virtualstore.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Data
@@ -11,11 +12,14 @@ public class ItemDTO {
 
     private UUID itemId;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String description;
 
-    private String urlImage;
-
+    @NotNull
     private double price;
+
+    private String urlImage;
 }
