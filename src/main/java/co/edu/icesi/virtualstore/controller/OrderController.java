@@ -46,13 +46,18 @@ public class OrderController implements OrderAPI {
     }
 
     @Override
+    public List<OrderDTO> getOrdersFromUser(UUID userId) {
+        return orderService.getOrdersFromUser(userId).stream().map(orderMapper::fromOrder).collect(Collectors.toList());
+    }
+
+    @Override
     public OrderDTO updateOrderStatus(UUID orderId, OrderDTO orderDTO) {
         verifyStatusExistence(orderDTO.getStatus());
         //TODO validate state update difference between user and admin
         return orderMapper.fromOrder(orderService.updateOrderStatus(orderId, orderMapper.fromDTO(orderDTO)));
     }
 
-    private void verifyStatusExistence(OrderStatus orderStatus){
+    private void verifyStatusExistence(String orderStatus){
         if(orderStatus.equals(CANCELED) || orderStatus.equals(CART)
                 || orderStatus.equals(SENT) || orderStatus.equals(COMPLETED)){
 

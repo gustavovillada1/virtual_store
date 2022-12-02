@@ -20,10 +20,10 @@ public interface OrderAPI {
     @GetMapping()
     public List<OrderDTO> getOrders();
 
+    @GetMapping("/{userId}")
+    public List<OrderDTO> getOrdersFromUser(@PathVariable UUID userId);
+
     @PatchMapping("/{orderId}")
     public OrderDTO updateOrderStatus(@PathVariable UUID orderId, @RequestBody OrderDTO orderDTO);
-
-//    public OrderItemDTO TODO
-
 
 }

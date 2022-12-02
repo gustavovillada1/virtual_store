@@ -16,7 +16,7 @@ public class OrderDTO {
     private double total;
 
     @NotNull
-    private OrderStatus status;
+    private String status;
 
     private List<OrderItemDTO> orderItems;
 

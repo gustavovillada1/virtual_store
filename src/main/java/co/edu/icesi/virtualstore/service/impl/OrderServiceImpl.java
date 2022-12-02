@@ -1,6 +1,5 @@
 package co.edu.icesi.virtualstore.service.impl;
 
-import co.edu.icesi.virtualstore.constans.OrderStatus;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.model.Order;
@@ -14,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
     public Order createOrder(Order order) {
         verifyUserExistence(order.getUserId());
         Order savedOrder = orderRepository.save(order);
-        updateOrderItems(savedOrder, order.getOrderItems());
+        saveOrderItems(savedOrder, order.getOrderItems());
         calculateTotal(order);
         return savedOrder;
     }
@@ -57,6 +57,11 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.save(oldOrder);
     }
 
+    @Override
+    public List<Order> getOrdersFromUser(UUID userId) {
+        return orderRepository.findOrdersFromUser(userId).orElse( new ArrayList<>());
+    }
+
     private Order verifyOrderInDatabase(UUID orderId){
         Order order = orderRepository.findById(orderId).orElse(null);
         if(order == null){
@@ -66,12 +71,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private void verifyUserExistence(UUID userId) {
-        if(userRepository.findById(userId).isPresent()){
+        if(userRepository.findById(userId).isEmpty()){
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(O_S_02, O_S_02.getErrorMessage()));
         }
     }
 
-    private void updateOrderItems(Order order, List<OrderItem> orderItems){
+    private void saveOrderItems(Order order, List<OrderItem> orderItems){
         for(OrderItem orderItem: orderItems){
             orderItem.getOrder().setOrderId(order.getOrderId());
             orderItem.setOrder(order);

@@ -11,6 +11,5 @@ public class OrderItemDTO {
 
     private UUID orderItemId;
     private int quantity;
-    private OrderDTO order;
     private ItemDTO item;
 }
