@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user) {
+    public User createUser(User user, UUID roleId) {
         verifyEmailRepeat(user.getEmail())  ;
-        verifyPhoneNumberRepeat(user.getPhone());
+        verifyPhoneRepeat(user.getPhone());
             return userRepository.save(user);
     }
 
@@ -47,9 +47,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void verifyPhoneNumberRepeat(String phoneNumber){
+    public void verifyPhoneRepeat(String phone){
         for (User i:getUsers()) {
-            if (i.getPhone().equals(phoneNumber)){
+            if (i.getPhone().equals(phone)){
                 throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError("1234","Phone repeated in the database"));
 
             }

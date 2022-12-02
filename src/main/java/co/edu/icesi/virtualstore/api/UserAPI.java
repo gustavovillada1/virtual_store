@@ -1,6 +1,7 @@
 package co.edu.icesi.virtualstore.api;
 
 import co.edu.icesi.virtualstore.dto.ItemDTO;
+import co.edu.icesi.virtualstore.dto.UserCreateDTO;
 import co.edu.icesi.virtualstore.dto.UserDTO;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public interface UserAPI {
 
 
     @PostMapping("/create")
-    public UserDTO createUser(@RequestBody @Valid UserDTO userDTO);
+    public UserDTO createUser(@RequestBody UserCreateDTO userCreateDTO);
 
     @GetMapping()
     public List<UserDTO> getUsers();

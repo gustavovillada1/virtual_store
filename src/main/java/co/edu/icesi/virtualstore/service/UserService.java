@@ -11,7 +11,7 @@ public interface UserService {
 
     public User getUser(@PathVariable UUID userId);
 
-    public User createUser(@RequestBody User userDTO);
+    public User createUser(@RequestBody User user, UUID roleId);
 
     public List<User> getUsers();
 

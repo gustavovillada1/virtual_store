@@ -1,6 +1,7 @@
 package co.edu.icesi.virtualstore.controller;
 
 import co.edu.icesi.virtualstore.api.UserAPI;
+import co.edu.icesi.virtualstore.dto.UserCreateDTO;
 import co.edu.icesi.virtualstore.dto.UserDTO;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
@@ -35,9 +36,9 @@ public class UserController implements UserAPI {
     }
 
     @Override
-    public UserDTO createUser(UserDTO userDTO) {
-        verifyUserEmailAndPhoneNumber(userDTO.getEmail(),userDTO.getPhoneNumber());
-        return userMapper.fromUser(userService.createUser(userMapper.fromDTO(userDTO)));
+    public UserDTO createUser(UserCreateDTO userCreateDTO) {
+        verifyUserEmailAndPhoneNumber(userCreateDTO.getEmail(), userCreateDTO.getPhone());
+        return userMapper.fromUser( userService.createUser(userMapper.fromCreateDTO(userCreateDTO), userCreateDTO.getRoleId()) );
     }
 
     @Override
@@ -47,10 +48,10 @@ public class UserController implements UserAPI {
     }
 
 
-    private boolean verifyUserEmailAndPhoneNumber(String email, String phoneNumber){
+    private boolean verifyUserEmailAndPhoneNumber(String email, String phone){
         boolean emailAndPhoneIsCorrect = false;
-        if(phoneNumber != null){
-            emailAndPhoneIsCorrect = verifyUserPhoneNumber(phoneNumber);
+        if(phone != null){
+            emailAndPhoneIsCorrect = verifyUserPhone(phone);
             if(!emailAndPhoneIsCorrect) {
                 return false;
             }
@@ -78,10 +79,10 @@ public class UserController implements UserAPI {
         }
     }
 
-    private boolean verifyUserPhoneNumber(String phoneNumber){
+    private boolean verifyUserPhone(String phone){
 
         //Verify if have the correct format of a colombian number phone +57XXXXXXXXXX
-        if(phoneNumber.substring(0,3).equals("+57") && phoneNumber.substring(3,13).matches("^[0-9]*$") && phoneNumber.length() == 13){
+        if(phone.substring(0,3).equals("+57") && phone.substring(3,13).matches("^[0-9]*$") && phone.length() == 13){
             return true;
         }else{
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError("1234","Throw UserDemoException - Phone is not correct"));
