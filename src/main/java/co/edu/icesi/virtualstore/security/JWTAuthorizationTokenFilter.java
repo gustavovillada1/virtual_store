@@ -21,10 +21,10 @@
 
 package co.edu.icesi.virtualstore.security;
 
+import co.edu.icesi.virtualstore.constans.StoreErrorCode;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoError;
 import co.edu.icesi.virtualstore.error.exception.StoreDemoException;
 import co.edu.icesi.virtualstore.utils.JWTParser;
-import co.edu.icesi.virtualstore.utils.constans.StoreErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -121,6 +121,10 @@ public class JWTAuthorizationTokenFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) {
         System.out.println(request.getMethod());
          if(request.getMethod().equals("OPTIONS")){
+            return true;
+        }
+
+        if(request.getMethod().equals("GET")){
             return true;
         }
         String methodPlusPath = request.getMethod() + " " + request.getRequestURI();
