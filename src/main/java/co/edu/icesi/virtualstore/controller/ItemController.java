@@ -54,7 +54,7 @@ public class ItemController implements ItemAPI {
 
 
     private void verifyNamePresence(ItemDTO itemDTO){
-        if(itemDTO.getName() == null) {
+        if(itemDTO.getName() == null || itemDTO.getName()=="") {
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_03, I_C_03.getErrorMessage()));
         }
     }
@@ -67,7 +67,7 @@ public class ItemController implements ItemAPI {
     }
 
     private void verifyDescriptionPresence(ItemDTO itemDTO){
-        if(itemDTO.getDescription() == null) {
+        if(itemDTO.getDescription() == null || itemDTO.getDescription()=="") {
             throw new StoreDemoException(HttpStatus.BAD_REQUEST, new StoreDemoError(I_C_04, I_C_04.getErrorMessage()));
         }
     }

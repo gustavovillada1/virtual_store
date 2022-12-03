@@ -37,7 +37,7 @@ public class ItemServiceTest {
 
     @Test
     public void testCreateItem(){
-        Item item = new Item(UUID.randomUUID(),"Toyota TXL","120.000 kilometros, modelo 2018","",150000000);
+        Item item = new Item(UUID.randomUUID(),"Toyota TXL","120.000 kilometros, modelo 2018",20000,"https://www.elcarrocolombiano.com/wp-content/uploads/2020/09/20200109-TOYOTA-LAND-CRUISER-2021-PORTADA.jpg");
 
         when(itemRepository.save(ArgumentMatchers.any())).thenReturn(item);
 

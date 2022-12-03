@@ -38,8 +38,8 @@ public class ItemControllerTest {
     @Test
     public void testCreateAnimal(){
         UUID itemId=UUID.randomUUID();
-        when(itemService.createItem(any())).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000));
-        ItemDTO itemTest = new ItemDTO(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000);
+        when(itemService.createItem(any())).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ",150000000,""));
+        ItemDTO itemTest = new ItemDTO(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ",150000000,"");
         assertEquals(itemTest.getName(), itemController.createItem(itemTest).getName());
     }
 
@@ -49,7 +49,7 @@ public class ItemControllerTest {
         ArrayList<Item> list= new ArrayList<Item>();
         UUID itemId=UUID.randomUUID();
 
-        list.add(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000));
+        list.add(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ",150000000,""));
         when(itemService.getItems()).thenReturn(list);
         assertTrue(itemController.getItems().get(0).getItemId().equals(itemId));
     }
@@ -57,7 +57,7 @@ public class ItemControllerTest {
 
     @Test
     public void testNameLength(){
-        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000);
+        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ",150000000,"");
         String itemName = "";
         for (int i=0;i<110;i++){
             itemName+="X";
@@ -71,7 +71,7 @@ public class ItemControllerTest {
 
     @Test
     public void testNameEmpty(){
-        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"","Toyota txl modelo 2011 - llantas nuevas ","",150000000);
+        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"","Toyota txl modelo 2011 - llantas nuevas ",150000000,"");
         try{
             itemController.createItem(itemDTO);
             fail();
@@ -82,9 +82,9 @@ public class ItemControllerTest {
 
     @Test
     public void testDescriptionLength(){
-        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000);
+        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ",150000000,"");
         String itemDescription = "";
-        for (int i=0;i<260;i++){
+        for (int i=0;i<960;i++){
             itemDescription+="X";
         }
         itemDTO.setDescription(itemDescription);
@@ -96,7 +96,7 @@ public class ItemControllerTest {
 
     @Test
     public void testDescriptionEmpty(){
-        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"Toyota TXL","","",150000000);
+        ItemDTO itemDTO = new ItemDTO(UUID.randomUUID(),"Toyota TXL","",150000000,"https://www.elcarrocolombiano.com/wp-content/uploads/2020/09/20200109-TOYOTA-LAND-CRUISER-2021-PORTADA.jpg");
         try{
             itemController.createItem(itemDTO);
             fail();
@@ -112,7 +112,7 @@ public class ItemControllerTest {
     public void testFindItem(){
         UUID itemId = UUID.randomUUID();
 
-        when(itemService.getItem(itemId)).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ","",150000000));
+        when(itemService.getItem(itemId)).thenReturn(new Item(itemId,"Toyota TXL","Toyota txl modelo 2011 - llantas nuevas ",150000000,""));
 
         ItemDTO itemResult= itemController.getItem(itemId);
         assertEquals(itemResult.getItemId(),itemId);

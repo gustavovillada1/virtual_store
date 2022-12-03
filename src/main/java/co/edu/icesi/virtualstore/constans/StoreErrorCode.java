@@ -22,6 +22,10 @@ public enum StoreErrorCode {
     U_S_02("Este telefono ya esta en uso"),
     U_S_03("El rol ingresado no existe"),
     U_S_04("El usuario ingresado no se encuentra registrado"),
+    U_C_05("El nombre ingresado está vacío"),
+    U_C_06("La descripción ingresada está vacía"),
+    U_C_07("El nombre ingresado es muy corto"),
+    U_C_08("La descripción ingresada es muy corta"),
 
 
     O_C_01("El estado ingresado no existe"),
